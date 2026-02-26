@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Krishan Kumar Yadav — MBBS · Physician</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   RESET & BASE
+============================================= */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:#080a0d;
+  color:#fff;
+  font-family:'Outfit',system-ui,sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  line-height:1.6;
+  cursor:none;
+}
+
+/* =============================================
+VARIABLES
+============================================= */
+:root{
+–ink:#080a0d;
+–ink2:#0d1014;
+–paper:#f5f3ee;
+–sage:#1e4535;
+–sage2:#2d6b52;
+–sage3:#3d8f6e;
+–gold:#b8996a;
+–gold2:#d4b483;
+–white:#ffffff;
+–muted:rgba(255,255,255,0.45);
+–serif:‘Cormorant Garamond’,Georgia,serif;
+–sans:‘Outfit’,system-ui,sans-serif;
+–ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+/* =============================================
+CUSTOM CURSOR
+============================================= */
+#cur-dot{
+position:fixed;top:0;left:0;
+width:6px;height:6px;
+background:#fff;border-radius:50%;
+pointer-events:none;z-index:9999;
+transform:translate(-50%,-50%);
+transition:transform 0.08s;
+mix-blend-mode:difference;
+}
+#cur-ring{
+position:fixed;top:0;left:0;
+width:36px;height:36px;
+border:1px solid rgba(255,255,255,0.35);
+border-radius:50%;
+pointer-events:none;z-index:9998;
+transform:translate(-50%,-50%);
+mix-blend-mode:difference;
+transition:width 0.3s var(–ease),height 0.3s var(–ease),opacity 0.3s;
+}
+.hovering #cur-ring{width:56px;height:56px;opacity:0.5}
+
+/* =============================================
+NAVIGATION
+============================================= */
+#nav{
+position:fixed;top:0;left:0;right:0;z-index:900;
+height:68px;
+display:flex;align-items:center;justify-content:space-between;
+padding:0 64px;
+transition:background 0.5s, backdrop-filter 0.5s, border 0.5s;
+}
+#nav.solid{
+background:rgba(8,10,13,0.9);
+backdrop-filter:blur(28px) saturate(1.6);
+-webkit-backdrop-filter:blur(28px) saturate(1.6);
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.nav-brand{
+font-family:var(–serif);font-size:1.1rem;
+color:#fff;text-decoration:none;font-weight:300;
+letter-spacing:0.02em;
+}
+.nav-brand b{color:var(–gold2);font-weight:400}
+.nav-menu{display:flex;gap:36px;list-style:none}
+.nav-menu a{
+font-size:0.68rem;font-weight:400;
+letter-spacing:0.18em;text-transform:uppercase;
+color:rgba(255,255,255,0.4);text-decoration:none;
+transition:color 0.3s;position:relative;
+}
+.nav-menu a::after{
+content:’’;position:absolute;left:0;bottom:-3px;
+width:0;height:1px;background:var(–gold2);
+transition:width 0.3s var(–ease);
+}
+.nav-menu a:hover{color:#fff}
+.nav-menu a:hover::after{width:100%}
+.nav-cta{
+display:inline-flex;align-items:center;gap:8px;
+padding:9px 22px;border-radius:100px;
+border:1px solid rgba(184,153,106,0.4);
+color:var(–gold2);font-size:0.72rem;font-weight:400;
+letter-spacing:0.1em;text-decoration:none;
+transition:all 0.3s var(–ease);
+}
+.nav-cta:hover{background:var(–gold);color:var(–ink);border-color:var(–gold)}
+
+/* =============================================
+HERO
+============================================= */
+#hero{
+position:relative;
+min-height:100vh;
+display:flex;align-items:center;
+overflow:hidden;
+}
+.hero-scene{
+position:absolute;inset:0;
+background:
+url(‘https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&q=85’) center/cover no-repeat;
+transform:scale(1.06);
+transition:transform 12s var(–ease);
+filter:brightness(0.22) saturate(0.8);
+}
+#hero.alive .hero-scene{transform:scale(1)}
+
+/* Sophisticated overlay layers */
+.hero-ov1{position:absolute;inset:0;background:linear-gradient(115deg,rgba(8,10,13,0.98) 0%,rgba(8,10,13,0.7) 50%,rgba(8,10,13,0.85) 100%)}
+.hero-ov2{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 100% 50%,rgba(30,69,53,0.18) 0%,transparent 65%)}
+.hero-grain{
+position:absolute;inset:0;pointer-events:none;
+background-image:url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘400’ height=‘400’%3E%3Cfilter id=‘g’%3E%3CfeTurbulence baseFrequency=‘0.72’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23g)’ opacity=‘0.035’/%3E%3C/svg%3E”);
+}
+
+.hero-inner{
+position:relative;z-index:2;
+width:100%;max-width:1300px;margin:0 auto;
+padding:120px 64px 200px;
+}
+
+/* Animated badge */
+.hero-badge{
+display:inline-flex;align-items:center;gap:10px;
+padding:8px 20px;
+border:1px solid rgba(184,153,106,0.28);
+border-radius:100px;
+font-size:0.66rem;font-weight:400;
+letter-spacing:0.22em;text-transform:uppercase;
+color:var(–gold2);
+margin-bottom:44px;
+opacity:0;
+animation:slideUp 0.9s var(–ease) 0.2s forwards;
+}
+.badge-pulse{
+width:7px;height:7px;border-radius:50%;
+background:var(–gold2);
+box-shadow:0 0 0 0 rgba(212,180,131,0.5);
+animation:ripple 2.2s ease infinite;
+}
+@keyframes ripple{
+0%{box-shadow:0 0 0 0 rgba(212,180,131,0.5)}
+70%{box-shadow:0 0 0 10px rgba(212,180,131,0)}
+100%{box-shadow:0 0 0 0 rgba(212,180,131,0)}
+}
+
+.hero-h1{
+font-family:var(–serif);
+font-size:clamp(4.5rem,11vw,10.5rem);
+font-weight:300;
+line-height:0.9;
+letter-spacing:-0.025em;
+margin-bottom:36px;
+opacity:0;
+animation:slideUp 1.3s var(–ease) 0.4s forwards;
+}
+.hero-h1 .l1{display:block;color:#fff}
+.hero-h1 .l2{
+display:block;
+font-style:italic;
+background:linear-gradient(125deg, rgba(255,255,255,0.95) 0%, var(–gold2) 60%, var(–gold) 100%);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.hero-rule{
+width:0;height:1px;
+background:linear-gradient(90deg,var(–gold),transparent);
+margin-bottom:36px;
+animation:ruleGrow 1.2s var(–ease) 0.9s forwards;
+}
+@keyframes ruleGrow{to{width:100px}}
+
+.hero-sub{
+font-size:1.08rem;color:rgba(255,255,255,0.55);
+line-height:1.9;max-width:500px;
+margin-bottom:60px;
+opacity:0;
+animation:slideUp 1s var(–ease) 1s forwards;
+}
+
+.hero-actions{
+display:flex;gap:14px;flex-wrap:wrap;
+opacity:0;
+animation:slideUp 1s var(–ease) 1.2s forwards;
+}
+.btn-prim{
+display:inline-flex;align-items:center;gap:10px;
+padding:14px 34px;border-radius:100px;
+background:var(–gold);color:var(–ink);
+font-family:var(–sans);font-size:0.82rem;font-weight:500;
+letter-spacing:0.06em;text-decoration:none;
+transition:all 0.4s var(–ease);
+border:none;cursor:none;
+}
+.btn-prim:hover{background:var(–gold2);transform:translateY(-3px);box-shadow:0 16px 48px rgba(184,153,106,0.45)}
+.btn-sec{
+display:inline-flex;align-items:center;gap:10px;
+padding:14px 34px;border-radius:100px;
+border:1px solid rgba(255,255,255,0.15);
+color:rgba(255,255,255,0.75);
+font-family:var(–sans);font-size:0.82rem;font-weight:300;
+letter-spacing:0.06em;text-decoration:none;
+transition:all 0.4s var(–ease);
+cursor:none;
+}
+.btn-sec:hover{border-color:rgba(255,255,255,0.5);color:#fff;transform:translateY(-3px);background:rgba(255,255,255,0.05)}
+
+/* Hero scroll indicator */
+.hero-scroll{
+position:absolute;bottom:44px;left:64px;z-index:2;
+display:flex;align-items:center;gap:16px;
+opacity:0;animation:fadeIn 1s ease 2s forwards;
+}
+.scroll-track{width:1px;height:52px;background:rgba(255,255,255,0.12);position:relative;overflow:hidden}
+.scroll-track::after{
+content:’’;position:absolute;top:0;left:0;right:0;
+height:40%;background:var(–gold2);
+animation:scrollDrop 2s ease-in-out infinite;
+}
+@keyframes scrollDrop{0%{top:-40%;opacity:0}20%{opacity:1}80%{opacity:1}100%{top:140%;opacity:0}}
+.scroll-lbl{font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.28)}
+
+/* Hero stat bar */
+.hero-statbar{
+position:absolute;bottom:0;left:0;right:0;z-index:2;
+display:grid;grid-template-columns:repeat(4,1fr);
+border-top:1px solid rgba(255,255,255,0.06);
+opacity:0;animation:fadeIn 1s ease 1.5s forwards;
+}
+.hs-item{
+padding:28px 40px;
+border-right:1px solid rgba(255,255,255,0.06);
+transition:background 0.35s;
+cursor:default;
+}
+.hs-item:last-child{border-right:none}
+.hs-item:hover{background:rgba(255,255,255,0.025)}
+.hs-num{
+font-family:var(–serif);
+font-size:2.6rem;font-weight:300;
+color:#fff;line-height:1;
+display:block;letter-spacing:-0.03em;
+}
+.hs-num sup{font-size:45%;color:var(–gold2);vertical-align:super}
+.hs-lbl{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:5px}
+
+@keyframes slideUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* =============================================
+SECTION GLOBALS
+============================================= */
+.section{padding:130px 0;position:relative}
+.wrap{max-width:1300px;margin:0 auto;padding:0 64px}
+
+.eyebrow{
+display:flex;align-items:center;gap:14px;
+font-size:0.63rem;font-weight:500;
+letter-spacing:0.24em;text-transform:uppercase;
+color:var(–gold2);margin-bottom:22px;
+}
+.eyebrow::before{content:’’;width:28px;height:1px;background:var(–gold2)}
+
+.big-title{
+font-family:var(–serif);
+font-size:clamp(2.8rem,5.5vw,5rem);
+font-weight:300;letter-spacing:-0.025em;
+line-height:1.05;color:#fff;
+}
+.big-title em{font-style:italic;color:var(–gold2)}
+.big-title-dark{color:var(–ink)}
+.big-title-dark em{color:var(–sage2)}
+
+/* scroll reveal */
+.sr{opacity:0;transform:translateY(36px);transition:opacity 0.85s var(–ease),transform 0.85s var(–ease)}
+.sr.in{opacity:1;transform:none}
+.sr-l{opacity:0;transform:translateX(-36px);transition:opacity 0.85s var(–ease),transform 0.85s var(–ease)}
+.sr-l.in{opacity:1;transform:none}
+.sr-r{opacity:0;transform:translateX(36px);transition:opacity 0.85s var(–ease),transform 0.85s var(–ease)}
+.sr-r.in{opacity:1;transform:none}
+.sr-s{opacity:0;transform:scale(0.94);transition:opacity 0.7s var(–ease),transform 0.7s var(–ease)}
+.sr-s.in{opacity:1;transform:none}
+
+/* =============================================
+ABOUT
+============================================= */
+#about{background:#0d1014}
+
+.about-layout{
+display:grid;
+grid-template-columns:480px 1fr;
+gap:96px;
+align-items:start;
+margin-top:80px;
+}
+
+/* Photo */
+.about-photo-col{position:sticky;top:100px}
+.photo-frame{
+position:relative;
+border-radius:6px;
+overflow:hidden;
+aspect-ratio:3/4;
+}
+.photo-frame img{
+width:100%;height:100%;
+object-fit:cover;
+filter:grayscale(10%) contrast(1.06);
+transition:transform 10s var(–ease), filter 0.6s;
+transform:scale(1.04);
+}
+.photo-frame:hover img{transform:scale(1.09);filter:grayscale(0%)}
+.photo-over{
+position:absolute;inset:0;
+background:linear-gradient(180deg,rgba(13,16,20,0) 40%,rgba(13,16,20,0.92) 100%);
+}
+.photo-caption{
+position:absolute;bottom:0;left:0;right:0;padding:36px;
+}
+.photo-caption h3{font-family:var(–serif);font-size:2rem;font-weight:300;color:#fff;line-height:1.15;margin-bottom:6px}
+.photo-caption p{font-size:0.68rem;color:var(–gold2);letter-spacing:0.14em;text-transform:uppercase}
+
+/* Text */
+.about-text-col{padding-top:4px}
+.about-lead{
+font-size:1.18rem;color:rgba(255,255,255,0.72);
+line-height:1.9;font-weight:300;
+margin-bottom:28px;
+}
+.about-body{
+font-size:0.9rem;color:rgba(255,255,255,0.38);
+line-height:1.9;margin-bottom:52px;
+}
+.about-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:56px}
+.chip{
+padding:7px 18px;border-radius:100px;
+font-size:0.7rem;letter-spacing:0.06em;
+border:1px solid rgba(255,255,255,0.1);
+color:rgba(255,255,255,0.5);
+transition:all 0.3s;cursor:default;
+}
+.chip:hover{border-color:var(–gold2);color:var(–gold2)}
+
+.feature-list{display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,0.06)}
+.fl-row{
+display:flex;gap:22px;align-items:flex-start;
+padding:22px 0;border-bottom:1px solid rgba(255,255,255,0.06);
+opacity:0;transform:translateX(28px);
+transition:opacity 0.65s var(–ease),transform 0.65s var(–ease);
+}
+.fl-row.in{opacity:1;transform:none}
+.fl-n{
+font-family:var(–serif);font-size:0.75rem;
+color:var(–gold2);font-style:italic;
+padding-top:3px;min-width:20px;flex-shrink:0;
+}
+.fl-txt h4{font-size:0.86rem;font-weight:500;color:#fff;margin-bottom:3px}
+.fl-txt p{font-size:0.78rem;color:rgba(255,255,255,0.36);line-height:1.65}
+
+/* =============================================
+SPECIALTIES MOSAIC
+============================================= */
+#spec{background:var(–ink);padding-bottom:0}
+
+.spec-head{
+display:grid;grid-template-columns:1fr 1fr;
+gap:60px;align-items:end;margin-bottom:72px;
+}
+.spec-head-sub{font-size:0.96rem;color:rgba(255,255,255,0.38);line-height:1.85;margin-top:20px}
+
+.mosaic{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+grid-template-rows:200px 200px 200px;
+gap:3px;
+}
+.tile{position:relative;overflow:hidden;cursor:none;
+opacity:0;transform:scale(0.97);
+transition:opacity 0.7s var(–ease),transform 0.7s var(–ease);}
+.tile.in{opacity:1;transform:none}
+.tile:nth-child(1){grid-column:span 2;grid-row:span 2}
+.tile:nth-child(6){grid-column:span 2}
+
+.tile-img{
+position:absolute;inset:0;
+background-size:cover;background-position:center;
+transition:transform 0.8s var(–ease);
+filter:brightness(0.58) saturate(0.75);
+}
+.tile:hover .tile-img{transform:scale(1.1);filter:brightness(0.75) saturate(1.1)}
+.tile-dark{position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(8,10,13,0.88) 100%)}
+.tile-tint{position:absolute;inset:0;background:rgba(30,69,53,0);transition:background 0.5s}
+.tile:hover .tile-tint{background:rgba(30,69,53,0.15)}
+.tile-info{position:absolute;bottom:0;left:0;right:0;padding:22px 26px;transform:translateY(4px);transition:transform 0.4s var(–ease)}
+.tile:hover .tile-info{transform:translateY(0)}
+.tile-name{font-family:var(–serif);font-size:1.08rem;font-weight:400;color:#fff;line-height:1.25}
+.tile:nth-child(1) .tile-name{font-size:2rem}
+.tile-tag{font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;display:block}
+.tile-tag-gold{color:var(–gold2)}
+
+/* =============================================
+EDUCATION & EXAMS
+============================================= */
+#edu{background:#0d1014}
+
+.edu-layout{
+display:grid;grid-template-columns:1fr 1fr;
+gap:96px;align-items:start;margin-top:80px;
+}
+
+/* Timeline */
+.timeline{position:relative;padding-left:0}
+.timeline::before{
+content:’’;position:absolute;left:3px;top:16px;bottom:16px;
+width:1px;background:rgba(255,255,255,0.07);
+}
+.t-item{
+position:relative;padding-left:44px;padding-bottom:60px;
+opacity:0;transform:translateY(22px);
+transition:opacity 0.75s var(–ease),transform 0.75s var(–ease);
+}
+.t-item.in{opacity:1;transform:none}
+.t-item:last-child{padding-bottom:0}
+.t-dot{
+position:absolute;left:-3px;top:8px;
+width:14px;height:14px;border-radius:50%;
+background:var(–sage2);
+box-shadow:0 0 0 5px rgba(45,107,82,0.18),0 0 20px rgba(45,107,82,0.3);
+z-index:1;
+}
+.t-year{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(–gold2);margin-bottom:10px}
+.t-title{font-family:var(–serif);font-size:1.55rem;font-weight:400;color:#fff;line-height:1.2;margin-bottom:6px}
+.t-inst{font-size:0.8rem;color:rgba(255,255,255,0.35);font-style:italic;margin-bottom:14px}
+.t-desc{font-size:0.83rem;color:rgba(255,255,255,0.44);line-height:1.75;margin-bottom:20px}
+.t-tags{display:flex;gap:8px;flex-wrap:wrap}
+.t-tag{padding:5px 14px;border-radius:100px;font-size:0.64rem;letter-spacing:0.08em;border:1px solid rgba(184,153,106,0.22);color:var(–gold2)}
+
+/* Exam cards */
+.exam-stack{display:flex;flex-direction:column;gap:10px}
+.exam-card{
+position:relative;overflow:hidden;
+padding:40px 44px;
+background:rgba(255,255,255,0.032);
+border:1px solid rgba(255,255,255,0.068);
+border-radius:4px;
+opacity:0;transform:translateX(32px);
+transition:opacity 0.7s var(–ease),transform 0.7s var(–ease),background 0.3s,box-shadow 0.4s;
+}
+.exam-card.in{opacity:1;transform:none}
+.exam-card::before{
+content:’’;position:absolute;top:0;left:0;bottom:0;
+width:2px;background:linear-gradient(180deg,var(–gold2),var(–gold));
+transform:scaleY(0);transform-origin:top;
+transition:transform 0.5s var(–ease);
+}
+.exam-card:hover::before{transform:scaleY(1)}
+.exam-card:hover{background:rgba(255,255,255,0.06);box-shadow:0 24px 60px rgba(0,0,0,0.4);transform:none !important; margin-left:-4px}
+
+.ec-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.ec-score{
+font-family:var(–serif);
+font-size:4rem;font-weight:300;
+color:#fff;line-height:1;letter-spacing:-0.04em;
+}
+.ec-score span{font-size:1.4rem;color:var(–gold2)}
+.ec-badge{
+padding:5px 14px;border-radius:100px;
+background:rgba(45,107,82,0.22);
+color:var(–sage3);font-size:0.62rem;
+letter-spacing:0.12em;text-transform:uppercase;
+border:1px solid rgba(61,143,110,0.28);
+align-self:flex-start;
+}
+.ec-name{font-size:0.64rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:6px}
+.ec-desc{font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.5}
+
+/* =============================================
+RESEARCH
+============================================= */
+#research{
+background:var(–ink);
+position:relative;overflow:hidden;
+}
+.research-scene{
+position:absolute;inset:0;
+background:url(‘https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1920&q=80’) center/cover;
+opacity:0.05;
+}
+
+.research-head{
+display:grid;grid-template-columns:1fr 1fr;
+gap:60px;align-items:end;margin-bottom:72px;
+}
+.research-sub{font-size:0.96rem;color:rgba(255,255,255,0.38);line-height:1.85;margin-top:20px}
+
+.res-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:3px;
+}
+.res-card{
+position:relative;overflow:hidden;
+padding:44px 38px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.055);
+opacity:0;transform:translateY(20px);
+transition:opacity 0.65s var(–ease),transform 0.65s var(–ease),background 0.35s,box-shadow 0.4s;
+}
+.res-card.in{opacity:1;transform:none}
+.res-card:hover{
+background:rgba(255,255,255,0.07);
+border-color:rgba(184,153,106,0.18);
+transform:none !important;
+box-shadow:0 30px 80px rgba(0,0,0,0.5);
+z-index:1;
+}
+.res-card::after{
+content:’’;position:absolute;top:0;left:0;right:0;
+height:2px;
+background:linear-gradient(90deg,var(–gold2),var(–gold));
+transform:scaleX(0);transform-origin:left;
+transition:transform 0.5s var(–ease);
+}
+.res-card:hover::after{transform:scaleX(1)}
+
+.rc-year{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:12px}
+.rc-spec{
+display:inline-block;margin-bottom:18px;
+padding:4px 14px;border-radius:100px;
+background:rgba(30,69,53,0.22);color:var(–sage3);
+font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;
+border:1px solid rgba(61,143,110,0.2);
+}
+.res-card h3{
+font-family:var(–serif);
+font-size:1.2rem;font-weight:400;color:#fff;
+line-height:1.4;margin-bottom:12px;
+}
+.res-card p{font-size:0.78rem;color:rgba(255,255,255,0.32);line-height:1.6}
+.rc-status{
+display:flex;align-items:center;gap:10px;
+margin-top:24px;font-size:0.63rem;
+color:var(–gold2);letter-spacing:0.1em;text-transform:uppercase;
+}
+.rc-status::before{content:’’;width:22px;height:1px;background:var(–gold2)}
+
+/* =============================================
+SKILLS (lighter, leaner, later in flow)
+============================================= */
+#skills{
+background:var(–paper);
+position:relative;overflow:hidden;
+}
+#skills .eyebrow{color:var(–sage2)}
+#skills .eyebrow::before{background:var(–sage2)}
+.skills-watermark{
+position:absolute;
+right:-60px;top:50%;transform:translateY(-50%);
+font-family:var(–serif);font-size:24vw;font-weight:600;font-style:italic;
+color:rgba(0,0,0,0.04);pointer-events:none;white-space:nowrap;line-height:1;
+}
+
+.skills-intro{
+display:grid;grid-template-columns:1fr 1fr;
+gap:60px;align-items:end;margin-bottom:72px;
+}
+.skills-sub{
+font-size:0.95rem;color:rgba(0,0,0,0.4);
+line-height:1.85;margin-top:20px;
+}
+
+/* Horizontal skill rows instead of big grid */
+.skill-rows{display:flex;flex-direction:column;gap:2px}
+.skill-row{
+display:flex;align-items:stretch;
+background:#fff;
+opacity:0;transform:translateX(-24px);
+transition:opacity 0.65s var(–ease),transform 0.65s var(–ease),box-shadow 0.35s;
+}
+.skill-row.in{opacity:1;transform:none}
+.skill-row:hover{box-shadow:0 8px 40px rgba(0,0,0,0.1);z-index:1;transform:none !important}
+
+.sk-head{
+width:260px;flex-shrink:0;
+padding:32px 36px;
+display:flex;align-items:center;gap:14px;
+border-right:1px solid rgba(0,0,0,0.06);
+background:rgba(0,0,0,0.015);
+position:relative;overflow:hidden;
+}
+.sk-head::after{
+content:’’;position:absolute;left:0;top:0;bottom:0;
+width:3px;background:linear-gradient(180deg,var(–sage),var(–sage2));
+transform:scaleY(0);transform-origin:top;
+transition:transform 0.45s var(–ease);
+}
+.skill-row:hover .sk-head::after{transform:scaleY(1)}
+.sk-emoji{font-size:1.35rem;flex-shrink:0}
+.sk-label{font-size:0.8rem;font-weight:500;color:var(–ink)}
+
+.sk-body{
+flex:1;padding:32px 40px;
+display:flex;flex-wrap:wrap;gap:10px;
+align-content:center;
+}
+.sk-chip{
+padding:6px 16px;border-radius:100px;
+font-size:0.75rem;color:#555;
+background:rgba(0,0,0,0.04);
+border:1px solid rgba(0,0,0,0.07);
+transition:all 0.3s;
+}
+.skill-row:hover .sk-chip{border-color:rgba(30,69,53,0.2);color:var(–sage2)}
+
+/* =============================================
+CONTACT
+============================================= */
+#contact{
+background:#0d1014;
+position:relative;overflow:hidden;
+}
+.contact-bg{
+position:absolute;right:0;top:0;width:48%;height:100%;
+background:url(‘https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=85’) center/cover;
+opacity:0.07;
+}
+
+.contact-layout{
+display:grid;grid-template-columns:1fr 480px;
+gap:96px;align-items:center;margin-top:80px;
+}
+
+.contact-text-col{}
+.contact-lead{font-size:1.1rem;color:rgba(255,255,255,0.5);line-height:1.85;margin:24px 0 52px}
+
+/* Contact items */
+.clinks{display:flex;flex-direction:column;gap:4px}
+.cl{
+display:flex;align-items:center;justify-content:space-between;
+padding:22px 28px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.05);
+text-decoration:none;color:#fff;
+position:relative;overflow:hidden;
+transition:background 0.35s,border-color 0.35s,transform 0.4s var(–ease);
+/* animation vars — set via JS */
+}
+.cl::before{
+content:’’;
+position:absolute;left:0;top:0;bottom:0;
+width:0;background:var(–gold);
+transition:width 0.5s var(–ease);
+z-index:0;
+}
+.cl:hover::before{width:4px}
+.cl:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);transform:translateX(6px)}
+.cl-left{display:flex;align-items:center;gap:18px;position:relative;z-index:1}
+.cl-ico{
+width:44px;height:44px;border-radius:50%;
+background:rgba(255,255,255,0.05);
+display:flex;align-items:center;justify-content:center;
+font-size:1.05rem;flex-shrink:0;
+transition:background 0.3s;
+}
+.cl:hover .cl-ico{background:rgba(255,255,255,0.1)}
+.cl-tag{font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:2px;transition:color 0.3s}
+.cl:hover .cl-tag{color:var(–gold2)}
+.cl-val{font-size:0.88rem;font-weight:400}
+.cl-arr{font-size:1rem;color:rgba(255,255,255,0.25);transition:all 0.35s var(–ease);position:relative;z-index:1}
+.cl:hover .cl-arr{color:var(–gold2);transform:translate(4px,-1px)}
+
+/* Individual animation classes for contact links */
+.cl.sr-c{
+opacity:0;transform:translateX(28px);
+transition:opacity 0.65s var(–ease),transform 0.65s var(–ease),background 0.35s,border-color 0.35s;
+}
+.cl.sr-c.in{opacity:1;transform:none}
+.cl.sr-c:hover{transform:translateX(6px)}
+
+/* Contact side image */
+.contact-img-col{
+position:relative;
+opacity:0;transform:translateX(40px);
+transition:opacity 1s var(–ease),transform 1s var(–ease);
+}
+.contact-img-col.in{opacity:1;transform:none}
+.contact-photo{
+aspect-ratio:4/5;border-radius:6px;overflow:hidden;
+position:relative;
+}
+.contact-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) contrast(1.04)}
+.contact-photo-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(13,16,20,0.88) 100%)}
+.contact-card{
+position:absolute;bottom:28px;left:28px;right:28px;
+background:rgba(8,10,13,0.88);
+backdrop-filter:blur(20px);
+padding:22px 26px;border-radius:4px;
+border:1px solid rgba(255,255,255,0.07);
+}
+.contact-card h4{font-family:var(–serif);font-size:1.15rem;color:#fff;margin-bottom:4px}
+.contact-card p{font-size:0.65rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase}
+
+/* =============================================
+FOOTER
+============================================= */
+footer{
+background:var(–ink);
+border-top:1px solid rgba(255,255,255,0.05);
+padding:44px 64px;
+display:flex;align-items:center;justify-content:space-between;
+}
+.ft-brand{font-family:var(–serif);font-size:1rem;color:rgba(255,255,255,0.4)}
+.ft-brand b{color:var(–gold2);font-weight:400}
+.ft-links{display:flex;gap:28px}
+.ft-links a{font-size:0.65rem;color:rgba(255,255,255,0.22);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s}
+.ft-links a:hover{color:var(–gold2)}
+.ft-copy{font-size:0.64rem;color:rgba(255,255,255,0.16);letter-spacing:0.06em}
+
+/* =============================================
+RESPONSIVE
+============================================= */
+@media(max-width:1100px){
+.about-layout{grid-template-columns:360px 1fr;gap:64px}
+.edu-layout,.contact-layout{grid-template-columns:1fr;gap:64px}
+.contact-img-col{display:none}
+.spec-head,.research-head,.skills-intro{grid-template-columns:1fr}
+.sk-head{width:220px}
+}
+@media(max-width:900px){
+#nav{padding:0 28px}
+.wrap{padding:0 28px}
+.hero-inner{padding:110px 28px 180px}
+.hero-scroll{left:28px}
+.about-layout{grid-template-columns:1fr}
+.about-photo-col{position:relative;top:auto;max-width:400px}
+.mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+.tile:nth-child(1){grid-column:span 2;grid-row:span 1}
+.tile:nth-child(6){grid-column:span 2}
+.res-grid{grid-template-columns:1fr 1fr}
+.hero-statbar{grid-template-columns:repeat(2,1fr)}
+footer{flex-direction:column;gap:20px;text-align:center;padding:36px 28px}
+}
+@media(max-width:600px){
+.nav-menu,.nav-cta{display:none}
+.hero-h1{font-size:clamp(3.5rem,14vw,6rem)}
+.hero-statbar{display:none}
+.mosaic{grid-template-columns:1fr}
+.tile:nth-child(1),.tile:nth-child(6){grid-column:span 1}
+.res-grid{grid-template-columns:1fr}
+.skill-row{flex-direction:column}
+.sk-head{width:100%;border-right:none;border-bottom:1px solid rgba(0,0,0,0.06)}
+}
+</style>
+
+</head>
+<body>
+
+<!-- Cursor -->
+
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<!-- =========================================
+     NAV
+========================================= -->
+
+<nav id="nav">
+  <a href="#hero" class="nav-brand">Dr. KK <b>Yadav</b></a>
+  <ul class="nav-menu">
+    <li><a href="#about">Profile</a></li>
+    <li><a href="#spec">Specialties</a></li>
+    <li><a href="#edu">Education</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch ↗</a>
+</nav>
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section id="hero">
+  <div class="hero-scene"></div>
+  <div class="hero-ov1"></div>
+  <div class="hero-ov2"></div>
+  <div class="hero-grain"></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-pulse"></span>
+      MBBS &nbsp;·&nbsp; FMGE Qualified &nbsp;·&nbsp; Open to Internship
+    </div>
+
+```
+<h1 class="hero-h1">
+  <span class="l1">Dr. Krishan Kumar</span>
+  <span class="l2">Yadav</span>
+</h1>
+
+<div class="hero-rule"></div>
+
+<p class="hero-sub">
+  Foreign medical graduate trained across 19+ clinical specialties at Danylo Halytsky Lviv National Medical University, Ukraine. FMGE cleared first attempt. 6 published abstracts.
+</p>
+
+<div class="hero-actions">
+  <a href="#contact" class="btn-prim">Connect with Me ↗</a>
+  <a href="#spec" class="btn-sec">Explore My Training</a>
+</div>
+```
+
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-track"></div>
+    <span class="scroll-lbl">Scroll to explore</span>
+  </div>
+
+  <div class="hero-statbar">
+    <div class="hs-item">
+      <span class="hs-num">19<sup>+</sup></span>
+      <div class="hs-lbl">Clinical Specialties</div>
+    </div>
+    <div class="hs-item">
+      <span class="hs-num">161<sup>/300</sup></span>
+      <div class="hs-lbl">FMGE Score</div>
+    </div>
+    <div class="hs-item">
+      <span class="hs-num">6</span>
+      <div class="hs-lbl">Published Abstracts</div>
+    </div>
+    <div class="hs-item">
+      <span class="hs-num">6<sup>yr</sup></span>
+      <div class="hs-lbl">Medical Training</div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     ABOUT
+========================================= -->
+
+<section id="about" class="section">
+  <div class="wrap">
+    <div class="about-layout">
+
+```
+  <!-- Photo -->
+  <div class="about-photo-col sr-l">
+    <div class="photo-frame">
+      <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=85" alt="Dr. Krishan Kumar Yadav" loading="lazy">
+      <div class="photo-over"></div>
+      <div class="photo-caption">
+        <h3>Dr. Krishan Kumar Yadav</h3>
+        <p>MBBS &nbsp;·&nbsp; FMGE Qualified &nbsp;·&nbsp; 2025</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Text -->
+  <div class="about-text-col">
+    <div class="eyebrow sr">About Me</div>
+    <h2 class="big-title sr" style="margin-bottom:40px">Clinically <em>trained.</em><br>Evidently driven.</h2>
+
+    <p class="about-lead sr">
+      I am a FMGE-qualified foreign medical graduate with a strong foundation in clinical medicine and a rare aptitude bridging healthcare and technology.
+    </p>
+    <p class="about-body sr">
+      After completing my six-year MBBS at Danylo Halytsky Lviv National Medical University, Lviv, Ukraine (2019–2025), I rotated across 19+ specialties under faculty supervision, developed robust bedside and reasoning skills, and co-authored six peer-reviewed conference abstracts. My background in AWS, Java, and microservices uniquely positions me at the intersection of medicine and digital health.
+    </p>
+
+    <div class="about-chips sr">
+      <span class="chip">Patient-Centred Care</span>
+      <span class="chip">Evidence-Based Medicine</span>
+      <span class="chip">Clinical Research</span>
+      <span class="chip">Digital Health</span>
+      <span class="chip">Hindi · English · Ukrainian</span>
+      <span class="chip">Team Collaboration</span>
+    </div>
+
+    <div class="feature-list">
+      <div class="fl-row">
+        <span class="fl-n">01</span>
+        <div class="fl-txt">
+          <h4>FMGE Cleared — First Attempt</h4>
+          <p>Scored 161/300 on India's Foreign Medical Graduate Examination in January 2026, qualifying on the very first attempt — a benchmark of clinical competence.</p>
+        </div>
+      </div>
+      <div class="fl-row">
+        <span class="fl-n">02</span>
+        <div class="fl-txt">
+          <h4>19+ Specialty Rotations</h4>
+          <p>Structured exposure across General Medicine, Surgery, OBG, Paediatrics, Neurology, Emergency, Dermatology, Psychiatry, ENT, Ophthalmology, Anaesthesiology, Radiology, Orthopaedics, Community Medicine and more.</p>
+        </div>
+      </div>
+      <div class="fl-row">
+        <span class="fl-n">03</span>
+        <div class="fl-txt">
+          <h4>6 Published Research Abstracts</h4>
+          <p>Published across Internal Medicine, Neurology and Obstetrics & Gynaecology at LYSICON 2024 & 2025 and international conferences — all accepted with certificates.</p>
+        </div>
+      </div>
+      <div class="fl-row">
+        <span class="fl-n">04</span>
+        <div class="fl-txt">
+          <h4>Tech-Literate Physician</h4>
+          <p>Proficient in AWS cloud computing, Java, microservices and backend development — ready for the future of digital health and clinical informatics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- =========================================
+     SPECIALTIES MOSAIC
+========================================= -->
+
+<section id="spec" class="section" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="spec-head">
+      <div>
+        <div class="eyebrow sr">Clinical Training</div>
+        <h2 class="big-title sr">19<em>+</em> Specialties<br>of Exposure</h2>
+      </div>
+      <p class="spec-head-sub sr">
+        Final-year structured rotations at Danylo Halytsky Lviv National Medical University under direct faculty supervision — covering every core medical and surgical department, with OSCE-assessed competency outcomes.
+      </p>
+    </div>
+  </div>
+
+  <div class="mosaic">
+    <div class="tile">
+      <div class="tile-img" style="background-image:url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=900&q=80')"></div>
+      <div class="tile-dark"></div><div class="tile-tint"></div>
+      <div class="tile-info">
+        <div class="tile-name">General Medicine</div>
+        <span class="tile-tag">Core Specialty &nbsp;·&nbsp; Danylo Halytsky, Lviv</span>
+      </div>
+    </div>
+    <div class="tile">
+      <div class="tile-img" style="background-image:url('https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=700&q=80')"></div>
+      <div class="tile-dark"></div><div class="tile-tint"></div>
+      <div class="tile-info">
+        <div class="tile-name">Emergency Medicine</div>
+        <span class="tile-tag">BLS &nbsp;·&nbsp; Acute Stabilisation</span>
+      </div>
+    </div>
+    <div class="tile">
+      <div class="tile-img" style="background-image:url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=700&q=80')"></div>
+      <div class="tile-dark"></div><div class="tile-tint"></div>
+      <div class="tile-info">
+        <div class="tile-name">Neurology</div>
+        <span class="tile-tag tile-tag-gold">2 Research Abstracts Published</span>
+      </div>
+    </div>
+    <div class="tile">
+      <div class="tile-img" style="background-image:url('https://images.unsplash.com/photo-1666214280391-8ff5bd3d0bf0?w=700&q=80')"></div>
+      <div class="tile-dark"></div><div class="tile-tint"></div>
+      <div class="tile-info">
+        <div class="tile-name">Obstetrics &amp; Gynaecology</div>
+        <span class="tile-tag tile-tag-gold">2 Research Abstracts Published</span>
+      </div>
+    </div>
+    <div class="tile">
+      <div class="tile-img" style="background-image:url('https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=900&q=80')"></div>
+      <div class="tile-dark"></div><div class="tile-tint"></div>
+      <div class="tile-info">
+        <div class="tile-name">General Surgery</div>
+        <span class="tile-tag">Procedural &amp; Inpatient Exposure</span>
+      </div>
+    </div>
+    <div class="tile">
+      <div class="tile-img" style="background-image:url('https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=700&q=80')"></div>
+      <div class="tile-dark"></div><div class="tile-tint"></div>
+      <div class="tile-info">
+        <div class="tile-name">Paediatrics &amp; 7+ More</div>
+        <span class="tile-tag">Ortho · Derm · ENT · Ophthal · Anaes · Psych · Radiology · Community</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     EDUCATION & EXAMS
+========================================= -->
+
+<section id="edu" class="section">
+  <div class="wrap">
+    <div class="eyebrow sr">Academic Background</div>
+    <h2 class="big-title sr" style="margin-bottom:0">Education &amp; <em>Examinations</em></h2>
+
+```
+<div class="edu-layout">
+  <!-- Timeline -->
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <div class="t-year">January 2026</div>
+      <h3 class="t-title">FMGE — Foreign Medical Graduate Examination</h3>
+      <div class="t-inst">National Board of Examinations, India</div>
+      <p class="t-desc">Cleared India's national licensing exam for foreign medical graduates on the very first attempt, scoring 161/300 — qualifying Dr. Yadav to practise medicine across India.</p>
+      <div class="t-tags">
+        <span class="t-tag">✓ First Attempt</span>
+        <span class="t-tag">161 / 300</span>
+        <span class="t-tag">Passed</span>
+      </div>
+    </div>
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <div class="t-year">2019 – 2025</div>
+      <h3 class="t-title">MBBS — General Medicine</h3>
+      <div class="t-inst">Danylo Halytsky Lviv National Medical University, Lviv, Ukraine</div>
+      <p class="t-desc">Rigorous six-year undergraduate medical degree with structured rotations across 19+ clinical specialties under direct faculty supervision. Competency assessed via Ukraine's national KROK examinations and OSCE practical assessments covering history taking, physical examination, procedural skills, clinical reasoning and communication.</p>
+      <div class="t-tags">
+        <span class="t-tag">KROK 1 &nbsp;·&nbsp; 73%</span>
+        <span class="t-tag">KROK 2 &nbsp;·&nbsp; 81%</span>
+        <span class="t-tag">OSCE Certified</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exam cards -->
+  <div class="exam-stack">
+    <div class="exam-card">
+      <div class="ec-top">
+        <span class="ec-score">161<span>/300</span></span>
+        <span class="ec-badge">✓ First Attempt</span>
+      </div>
+      <div class="ec-name">FMGE &nbsp;·&nbsp; India &nbsp;·&nbsp; January 2026</div>
+      <p class="ec-desc">Foreign Medical Graduate Examination — India's national licensing board for international graduates. Qualified on the first attempt.</p>
+    </div>
+    <div class="exam-card">
+      <div class="ec-top">
+        <span class="ec-score">81<span>%</span></span>
+        <span class="ec-badge">✓ Passed</span>
+      </div>
+      <div class="ec-name">KROK Step 2 &nbsp;·&nbsp; Ukraine &nbsp;·&nbsp; 2025</div>
+      <p class="ec-desc">Clinical Medicine Licensing Examination — Step 2. National standardised assessment of clinical competency.</p>
+    </div>
+    <div class="exam-card">
+      <div class="ec-top">
+        <span class="ec-score">73<span>%</span></span>
+        <span class="ec-badge">✓ Passed</span>
+      </div>
+      <div class="ec-name">KROK Step 1 &nbsp;·&nbsp; Ukraine &nbsp;·&nbsp; 2023</div>
+      <p class="ec-desc">Pre-Clinical Basic Sciences Licensing Examination — Step 1. Foundational sciences and medical knowledge assessment.</p>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- =========================================
+     RESEARCH
+========================================= -->
+
+<section id="research" class="section">
+  <div class="research-scene"></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="research-head">
+      <div>
+        <div class="eyebrow sr">Publications</div>
+        <h2 class="big-title sr">Research &amp;<br><em>Published</em> Abstracts</h2>
+      </div>
+      <p class="research-sub sr">
+        Six peer-reviewed conference abstracts spanning three clinical disciplines — all accepted, published and awarded certificates at national and international medical conferences 2024–2025.
+      </p>
+    </div>
+
+```
+<div class="res-grid">
+  <div class="res-card">
+    <div class="rc-year">2024</div>
+    <span class="rc-spec">Internal Medicine</span>
+    <h3>Abstract in Internal Medicine</h3>
+    <p>Accepted, published and awarded certificate of publication at international medical conference.</p>
+    <div class="rc-status">Published &amp; Certified</div>
+  </div>
+  <div class="res-card">
+    <div class="rc-year">2025</div>
+    <span class="rc-spec">Internal Medicine</span>
+    <h3>Abstract in Internal Medicine</h3>
+    <p>Accepted and published at LYSICON 2025 with certificate of presentation.</p>
+    <div class="rc-status">LYSICON 2025</div>
+  </div>
+  <div class="res-card">
+    <div class="rc-year">2024</div>
+    <span class="rc-spec">Obstetrics &amp; Gynaecology</span>
+    <h3>Abstract in Obstetrics &amp; Gynaecology</h3>
+    <p>Accepted, published and awarded certificate of publication 2024.</p>
+    <div class="rc-status">Published &amp; Certified</div>
+  </div>
+  <div class="res-card">
+    <div class="rc-year">2025</div>
+    <span class="rc-spec">Obstetrics &amp; Gynaecology</span>
+    <h3>Abstract in Obstetrics &amp; Gynaecology</h3>
+    <p>Accepted and published at LYSICON 2025 with certificate.</p>
+    <div class="rc-status">LYSICON 2025</div>
+  </div>
+  <div class="res-card">
+    <div class="rc-year">2024</div>
+    <span class="rc-spec">Neurology</span>
+    <h3>Abstract in Neurology</h3>
+    <p>Accepted, published and awarded certificate at international conference 2024.</p>
+    <div class="rc-status">Published &amp; Certified</div>
+  </div>
+  <div class="res-card">
+    <div class="rc-year">2025</div>
+    <span class="rc-spec">Neurology</span>
+    <h3>Abstract in Neurology</h3>
+    <p>Accepted, published and awarded certificate at international conference 2025.</p>
+    <div class="rc-status">International 2025</div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- =========================================
+     SKILLS (compact horizontal rows)
+========================================= -->
+
+<section id="skills" class="section">
+  <div class="skills-watermark">RX</div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="skills-intro">
+      <div>
+        <div class="eyebrow sr">Core Competencies</div>
+        <h2 class="big-title big-title-dark sr">Skills &amp;<br><em>Expertise</em></h2>
+      </div>
+      <p class="skills-sub sr">
+        From bedside clinical skills to emergency management and digital health technology — a versatile and practice-ready physician.
+      </p>
+    </div>
+
+```
+<div class="skill-rows">
+  <div class="skill-row">
+    <div class="sk-head"><span class="sk-emoji">🩺</span><span class="sk-label">Clinical Assessment</span></div>
+    <div class="sk-body">
+      <span class="sk-chip">Comprehensive history taking</span>
+      <span class="sk-chip">Systematic physical exam</span>
+      <span class="sk-chip">Clinical reasoning</span>
+      <span class="sk-chip">Case documentation</span>
+      <span class="sk-chip">Case presentation</span>
+    </div>
+  </div>
+  <div class="skill-row">
+    <div class="sk-head"><span class="sk-emoji">⚡</span><span class="sk-label">Emergency &amp; Acute Care</span></div>
+    <div class="sk-body">
+      <span class="sk-chip">Basic Life Support (BLS)</span>
+      <span class="sk-chip">Emergency stabilisation</span>
+      <span class="sk-chip">Acute emergency management</span>
+      <span class="sk-chip">IV fluid administration</span>
+    </div>
+  </div>
+  <div class="skill-row">
+    <div class="sk-head"><span class="sk-emoji">🔬</span><span class="sk-label">Diagnostics</span></div>
+    <div class="sk-body">
+      <span class="sk-chip">ECG interpretation</span>
+      <span class="sk-chip">CBC · LFT · RFT panels</span>
+      <span class="sk-chip">Chest X-ray reading</span>
+      <span class="sk-chip">Evidence-based management</span>
+      <span class="sk-chip">OSCE certified</span>
+    </div>
+  </div>
+  <div class="skill-row">
+    <div class="sk-head"><span class="sk-emoji">🏥</span><span class="sk-label">Ward Management</span></div>
+    <div class="sk-body">
+      <span class="sk-chip">Inpatient evaluation</span>
+      <span class="sk-chip">Ward rounds &amp; MDT</span>
+      <span class="sk-chip">Patient record maintenance</span>
+      <span class="sk-chip">Infection control protocols</span>
+    </div>
+  </div>
+  <div class="skill-row">
+    <div class="sk-head"><span class="sk-emoji">🤝</span><span class="sk-label">Communication</span></div>
+    <div class="sk-body">
+      <span class="sk-chip">Patient-centred communication</span>
+      <span class="sk-chip">Multidisciplinary teamwork</span>
+      <span class="sk-chip">Hindi (fluent)</span>
+      <span class="sk-chip">English</span>
+      <span class="sk-chip">Ukrainian (basic)</span>
+    </div>
+  </div>
+  <div class="skill-row">
+    <div class="sk-head"><span class="sk-emoji">☁️</span><span class="sk-label">Technology</span></div>
+    <div class="sk-body">
+      <span class="sk-chip">AWS Cloud Computing</span>
+      <span class="sk-chip">Java</span>
+      <span class="sk-chip">Microservices</span>
+      <span class="sk-chip">Backend development</span>
+      <span class="sk-chip">Cloud infrastructure</span>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- =========================================
+     CONTACT
+========================================= -->
+
+<section id="contact" class="section">
+  <div class="contact-bg"></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="eyebrow sr">Get in Touch</div>
+    <h2 class="big-title sr">Let's <em>Connect</em></h2>
+
+```
+<div class="contact-layout">
+  <div class="contact-text-col">
+    <p class="contact-lead sr">
+      Open to internship positions, hospital placements and research collaborations across India. I bring strong clinical training, multilingual communication, and a genuine commitment to patient care.
+    </p>
+
+    <div class="clinks">
+      <a href="mailto:7341kkumar@gmail.com" class="cl sr-c">
+        <div class="cl-left">
+          <div class="cl-ico">✉️</div>
+          <div>
+            <div class="cl-tag">Email</div>
+            <div class="cl-val">7341kkumar@gmail.com</div>
+          </div>
+        </div>
+        <span class="cl-arr">↗</span>
+      </a>
+      <a href="tel:+919414577341" class="cl sr-c">
+        <div class="cl-left">
+          <div class="cl-ico">📞</div>
+          <div>
+            <div class="cl-tag">Phone</div>
+            <div class="cl-val">+91 94145 77341</div>
+          </div>
+        </div>
+        <span class="cl-arr">↗</span>
+      </a>
+      <a href="https://www.linkedin.com/in/doctorkrishna" target="_blank" class="cl sr-c">
+        <div class="cl-left">
+          <div class="cl-ico">💼</div>
+          <div>
+            <div class="cl-tag">LinkedIn</div>
+            <div class="cl-val">linkedin.com/in/doctorkrishna</div>
+          </div>
+        </div>
+        <span class="cl-arr">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-img-col">
+    <div class="contact-photo">
+      <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=800&q=85" alt="Medical consultation" loading="lazy">
+      <div class="contact-photo-ov"></div>
+    </div>
+    <div class="contact-card">
+      <h4>Dr. Krishan Kumar Yadav</h4>
+      <p>MBBS &nbsp;·&nbsp; FMGE Qualified &nbsp;·&nbsp; Available for Internship</p>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+  <div class="ft-brand">Dr. Krishan Kumar <b>Yadav</b></div>
+  <div class="ft-links">
+    <a href="mailto:7341kkumar@gmail.com">Email</a>
+    <a href="tel:+919414577341">Phone</a>
+    <a href="https://www.linkedin.com/in/doctorkrishna" target="_blank">LinkedIn</a>
+  </div>
+  <div class="ft-copy">© 2025 &nbsp;·&nbsp; MBBS &nbsp;·&nbsp; FMGE Qualified</div>
+</footer>
+
+<!-- =============================================
+     JAVASCRIPT
+============================================= -->
+
+<script>
+/* --- Custom cursor --- */
+const dot = document.getElementById('cur-dot');
+const ring = document.getElementById('cur-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px';
+  dot.style.top = my + 'px';
+});
+
+(function animRing() {
+  rx += (mx - rx) * 0.11;
+  ry += (my - ry) * 0.11;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animRing);
+})();
+
+// Hover detection
+document.querySelectorAll('a, button, .tile, .res-card, .exam-card, .cl, .chip, .skill-row').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+});
+
+/* --- Nav solid on scroll --- */
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  navEl.classList.toggle('solid', window.scrollY > 50);
+}, { passive: true });
+
+/* --- Hero alive --- */
+setTimeout(() => document.getElementById('hero').classList.add('alive'), 100);
+
+/* --- Parallax hero --- */
+const heroScene = document.querySelector('.hero-scene');
+window.addEventListener('scroll', () => {
+  if (window.scrollY < window.innerHeight * 1.2) {
+    heroScene.style.transform = `translateY(${window.scrollY * 0.18}px)`;
+  }
+}, { passive: true });
+
+/* --- Intersection observer --- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      // Stagger siblings of same type
+      const parent = el.parentElement;
+      const sameClass = Array.from(parent.children).filter(c =>
+        c.classList.contains(el.classList[0])
+      );
+      const idx = sameClass.indexOf(el);
+      const delay = idx * 90;
+      setTimeout(() => el.classList.add('in'), delay);
+      io.unobserve(el);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+// Observe all animated elements
+const selectors = [
+  '.sr', '.sr-l', '.sr-r', '.sr-s',
+  '.fl-row', '.tile', '.t-item',
+  '.exam-card', '.res-card', '.skill-row',
+  '.cl.sr-c', '.contact-img-col'
+];
+document.querySelectorAll(selectors.join(',')).forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
