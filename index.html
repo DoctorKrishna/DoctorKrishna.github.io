@@ -35,15 +35,15 @@ body.hov #cur-ring{width:54px;height:54px;opacity:.5}
 /* NAV */
 #nav{position:fixed;top:0;left:0;right:0;z-index:900;height:68px;padding:0 64px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,border .5s}
 #nav.solid{background:rgba(8,10,13,.92);backdrop-filter:blur(28px) saturate(1.6);-webkit-backdrop-filter:blur(28px) saturate(1.6);border-bottom:1px solid rgba(255,255,255,.05)}
-.nav-brand{font-family:var(–serif);font-size:1.1rem;color:#fff;text-decoration:none;font-weight:300;letter-spacing:.02em}
-.nav-brand b{color:var(–gold2);font-weight:400}
+.nav-brand{font-family:var(–-serif);font-size:1.1rem;color:#fff;text-decoration:none;font-weight:300;letter-spacing:.02em}
+.nav-brand b{color:var(–-gold2);font-weight:400}
 .nav-menu{display:flex;gap:36px;list-style:none}
 .nav-menu a{font-size:.68rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .3s;position:relative}
-.nav-menu a::after{content:’’;position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(–gold2);transition:width .3s var(–ease)}
+.nav-menu a::after{content:’’;position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(–-gold2);transition:width .3s var(–-ease)}
 .nav-menu a:hover{color:#fff}
 .nav-menu a:hover::after{width:100%}
-.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:9px 22px;border-radius:100px;border:1px solid rgba(184,153,106,.4);color:var(–gold2);font-size:.72rem;text-decoration:none;letter-spacing:.1em;transition:all .3s var(–ease)}
-.nav-cta:hover{background:var(–gold);color:var(–ink);border-color:var(–gold)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:9px 22px;border-radius:100px;border:1px solid rgba(184,153,106,.4);color:var(–-gold2);font-size:.72rem;text-decoration:none;letter-spacing:.1em;transition:all .3s var(–-ease)}
+.nav-cta:hover{background:var(–-gold);color:var(–-ink);border-color:var(–-gold)}
 
 /* HERO */
 #hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
@@ -56,7 +56,7 @@ body.hov #cur-ring{width:54px;height:54px;opacity:.5}
 .hero-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 20px;border:1px solid rgba(184,153,106,.28);border-radius:100px;font-size:.66rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(–gold2);margin-bottom:44px;opacity:0;animation:slideUp .9s var(–ease) .2s forwards}
 .badge-dot{width:7px;height:7px;border-radius:50%;background:var(–gold2);animation:ripple 2.2s ease infinite}
 @keyframes ripple{0%{box-shadow:0 0 0 0 rgba(212,180,131,.5)}70%{box-shadow:0 0 0 10px rgba(212,180,131,0)}100%{box-shadow:0 0 0 0 rgba(212,180,131,0)}}
-.hero-h1{font-family:var(–serif);font-size:clamp(4.5rem,11vw,10.5rem);font-weight:300;line-height:.9;letter-spacing:-.025em;margin-bottom:36px;opacity:0;animation:slideUp 1.3s var(–ease) .4s forwards}
+.hero-h1{font-family:var(–-serif);font-size:clamp(4.5rem,11vw,10.5rem);font-weight:300;line-height:.9;letter-spacing:-.025em;margin-bottom:36px;opacity:0;animation:slideUp 1.3s var(–ease) .4s forwards}
 .hero-h1 .l1{display:block;color:#fff}
 .hero-h1 .l2{display:block;font-style:italic;background:linear-gradient(125deg,rgba(255,255,255,.95) 0%,var(–gold2) 60%,var(–gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-rule{width:0;height:1px;background:linear-gradient(90deg,var(–gold),transparent);margin-bottom:36px;animation:ruleGrow 1.2s var(–ease) .9s forwards}
@@ -64,7 +64,7 @@ body.hov #cur-ring{width:54px;height:54px;opacity:.5}
 .hero-sub{font-size:1.08rem;color:rgba(255,255,255,.55);line-height:1.9;max-width:500px;margin-bottom:60px;opacity:0;animation:slideUp 1s var(–ease) 1s forwards}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:slideUp 1s var(–ease) 1.2s forwards}
 .btn-prim{display:inline-flex;align-items:center;gap:10px;padding:14px 34px;border-radius:100px;background:var(–gold);color:var(–ink);font-family:var(–sans);font-size:.82rem;font-weight:500;letter-spacing:.06em;text-decoration:none;transition:all .4s var(–ease);border:none;cursor:none}
-.btn-prim:hover{background:var(–gold2);transform:translateY(-3px);box-shadow:0 16px 48px rgba(184,153,106,.45)}
+.btn-prim:hover{background:var(–-gold2);transform:translateY(-3px);box-shadow:0 16px 48px rgba(184,153,106,.45)}
 .btn-sec{display:inline-flex;align-items:center;gap:10px;padding:14px 34px;border-radius:100px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);font-family:var(–sans);font-size:.82rem;font-weight:300;letter-spacing:.06em;text-decoration:none;transition:all .4s var(–ease);cursor:none}
 .btn-sec:hover{border-color:rgba(255,255,255,.5);color:#fff;transform:translateY(-3px);background:rgba(255,255,255,.05)}
 .hero-scroll{position:absolute;bottom:44px;left:64px;z-index:2;display:flex;align-items:center;gap:16px;opacity:0;animation:fadeIn 1s ease 2s forwards}
@@ -76,7 +76,7 @@ body.hov #cur-ring{width:54px;height:54px;opacity:.5}
 .hs-item{padding:28px 40px;border-right:1px solid rgba(255,255,255,.06);transition:background .35s}
 .hs-item:last-child{border-right:none}
 .hs-item:hover{background:rgba(255,255,255,.025)}
-.hs-num{font-family:var(–serif);font-size:2.6rem;font-weight:300;color:#fff;line-height:1;display:block;letter-spacing:-.03em}
+.hs-num{font-family:var(–-serif);font-size:2.6rem;font-weight:300;color:#fff;line-height:1;display:block;letter-spacing:-.03em}
 .hs-num sup{font-size:45%;color:var(–gold2);vertical-align:super}
 .hs-lbl{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:5px}
 @keyframes slideUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
@@ -86,14 +86,14 @@ body.hov #cur-ring{width:54px;height:54px;opacity:.5}
 .section{padding:130px 0;position:relative}
 .wrap{max-width:1300px;margin:0 auto;padding:0 64px}
 .eyebrow{display:flex;align-items:center;gap:14px;font-size:.63rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(–gold2);margin-bottom:22px}
-.eyebrow::before{content:’’;width:28px;height:1px;background:var(–gold2)}
-.big-title{font-family:var(–serif);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:300;letter-spacing:-.025em;line-height:1.05;color:#fff}
-.big-title em{font-style:italic;color:var(–gold2)}
-.dark-title{color:var(–ink)}
-.dark-title em{color:var(–sage2)}
-.sr{opacity:0;transform:translateY(36px);transition:opacity .85s var(–ease),transform .85s var(–ease)}
+.eyebrow::before{content:’’;width:28px;height:1px;background:var(–-gold2)}
+.big-title{font-family:var(–-serif);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:300;letter-spacing:-.025em;line-height:1.05;color:#fff}
+.big-title em{font-style:italic;color:var(–-gold2)}
+.dark-title{color:var(–-ink)}
+.dark-title em{color:var(–-sage2)}
+.sr{opacity:0;transform:translateY(36px);transition:opacity .85s var(–-ease),transform .85s var(–-ease)}
 .sr.in{opacity:1;transform:none}
-.sr-l{opacity:0;transform:translateX(-36px);transition:opacity .85s var(–ease),transform .85s var(–ease)}
+.sr-l{opacity:0;transform:translateX(-36px);transition:opacity .85s var(–-ease),transform .85s var(–-ease)}
 .sr-l.in{opacity:1;transform:none}
 
 /* ABOUT */
@@ -111,11 +111,11 @@ body.hov #cur-ring{width:54px;height:54px;opacity:.5}
 .about-body{font-size:.9rem;color:rgba(255,255,255,.38);line-height:1.9;margin-bottom:52px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:56px}
 .chip{padding:7px 18px;border-radius:100px;font-size:.7rem;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);transition:all .3s}
-.chip:hover{border-color:var(–gold2);color:var(–gold2)}
+.chip:hover{border-color:var(–-gold2);color:var(–-gold2)}
 .feature-list{display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.06)}
 .fl-row{display:flex;gap:22px;align-items:flex-start;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.06);opacity:0;transform:translateX(28px);transition:opacity .65s var(–ease),transform .65s var(–ease)}
 .fl-row.in{opacity:1;transform:none}
-.fl-n{font-family:var(–serif);font-size:.75rem;color:var(–gold2);font-style:italic;padding-top:3px;min-width:20px;flex-shrink:0}
+.fl-n{font-family:var(–-serif);font-size:.75rem;color:var(–-gold2);font-style:italic;padding-top:3px;min-width:20px;flex-shrink:0}
 .fl-txt h4{font-size:.86rem;font-weight:500;color:#fff;margin-bottom:3px}
 .fl-txt p{font-size:.78rem;color:rgba(255,255,255,.36);line-height:1.65}
 
